@@ -1,16 +1,17 @@
-DROP TABLE IF EXISTS `admins`;
-CREATE TABLE `admins` (
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(255) NOT NULL,
   `last_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
+  `user_level` ENUM('a', 'm') NOT NULL,
   `hashed_password` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `index_username` (`username`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
-INSERT INTO `admins` VALUES (1,'Kevin','Skoglund','kevin@somewhere.com','kskoglund','$2y$10$74202tWuILkLIEKyAUKR/ejEmtXUjwIV3XWlWz.BeRpSgOtZAC0FS');
+INSERT INTO `users` VALUES (1,'Kevin','Skoglund','kevin@somewhere.com','kskoglund','m','$2y$10$74202tWuILkLIEKyAUKR/ejEmtXUjwIV3XWlWz.BeRpSgOtZAC0FS'), (2,'Joshua','Thomas','joshuaathomas36@students.abtech.edu','joshuaathomas36','a','$2y$10$sOAkDYMZmnnQAW1a08hDD.nmGpUAEGxgHKb6xfXyrKeub6qUKGlne'), (3,'Charles','Wallin','charleskwallin@abtech.edu','charleskwallin','a','$2y$10$fjbC7wID4SP7BtxhlBC8Ku7iPdGvPszVd5WIZSUZsR8WPL/8XY6w6');
 
 DROP TABLE IF EXISTS `bicycles`;
 CREATE TABLE `bicycles` (

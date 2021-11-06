@@ -8,12 +8,12 @@ if(is_post_request()) {
 
   // Create record using post parameters
   $args = $_POST['admin'];
-  $admin = new Admin($args);
+  $admin = new Users($args);
   $result = $admin->save();
 
   if($result === true) {
     $new_id = $admin->id;
-    $session->message('The admin was created successfully.');
+    $session->message('The user was created successfully.');
     redirect_to(url_for('/staff/admins/show.php?id=' . $new_id));
   } else {
     // show errors
@@ -21,12 +21,12 @@ if(is_post_request()) {
 
 } else {
   // display the form
-  $admin = new Admin;
+  $admin = new Users;
 }
 
 ?>
 
-<?php $page_title = 'Create Admin'; ?>
+<?php $page_title = 'Create User'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
@@ -34,7 +34,7 @@ if(is_post_request()) {
   <a class="back-link" href="<?php echo url_for('/staff/admins/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="admin new">
-    <h1>Create Admin</h1>
+    <h1>Create User</h1>
 
     <?php echo display_errors($admin->errors); ?>
 

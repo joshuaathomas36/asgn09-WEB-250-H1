@@ -5,7 +5,7 @@
 
 $id = $_GET['id'] ?? '1'; // PHP > 7.0
 
-$admin = Admin::find_by_id($id);
+$admin = Users::find_by_id($id);
 
 ?>
 
@@ -18,7 +18,7 @@ $admin = Admin::find_by_id($id);
 
   <div class="admin show">
 
-    <h1>Admin: <?php echo h($admin->full_name()); ?></h1>
+    <h1>User: <?php echo h($admin->full_name()); ?></h1>
 
     <div class="attributes">
       <dl>
@@ -36,6 +36,10 @@ $admin = Admin::find_by_id($id);
       <dl>
         <dt>Username</dt>
         <dd><?php echo h($admin->username); ?></dd>
+      </dl>
+      <dl>
+        <dt>User Level</dt>
+        <dd><?php echo h($admin->user_level); ?></dd>
       </dl>
     </div>
 

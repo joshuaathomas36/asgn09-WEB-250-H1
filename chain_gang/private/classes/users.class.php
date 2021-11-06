@@ -1,15 +1,16 @@
 <?php
 
-class Admin extends DatabaseObject {
+class Users extends DatabaseObject {
 
-  static protected $table_name = "admins";
-  static protected $db_columns = ['id', 'first_name', 'last_name', 'email', 'username', 'hashed_password'];
+  static protected $table_name = "users";
+  static protected $db_columns = ['id', 'first_name', 'last_name', 'email', 'username', 'user_level', 'hashed_password'];
 
   public $id;
   public $first_name;
   public $last_name;
   public $email;
   public $username;
+  public $user_level;
   protected $hashed_password;
   public $password;
   public $confirm_password;
@@ -20,6 +21,7 @@ class Admin extends DatabaseObject {
     $this->last_name = $args['last_name'] ?? '';
     $this->email = $args['email'] ?? '';
     $this->username = $args['username'] ?? '';
+    $this->user_level = $args['user_level'] ?? '';
     $this->password = $args['password'] ?? '';
     $this->confirm_password = $args['confirm_password'] ?? '';
   }
@@ -28,6 +30,9 @@ class Admin extends DatabaseObject {
     return $this->first_name . " " . $this->last_name;
   }
 
+/**
+ * The set_hashed_password method sets the hashed password
+ */
   protected function set_hashed_password() {
     $this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT);
   }
@@ -36,11 +41,21 @@ class Admin extends DatabaseObject {
     return password_verify($password, $this->hashed_password);
   }
 
+/**
+ * The create method uses the the set_hashed_password method then returns the create method
+ *
+ * @return  [String]  returns the create method
+ */
   protected function create() {
     $this->set_hashed_password();
     return parent::create();
   }
 
+  /**
+   * The update method checks if the password is being updated or not
+   *
+   * @return  [String or Boolean]  returns the result of set_hashed_password method or that the password is not required
+   */
   protected function update() {
     if($this->password != '') {
       $this->set_hashed_password();
@@ -81,6 +96,12 @@ class Admin extends DatabaseObject {
       $this->errors[] = "Username must be between 8 and 255 characters.";
     } elseif (!has_unique_username($this->username, $this->id ?? 0)) {
       $this->errors[] = "Username not allowed. Try another.";
+    }
+
+    if(is_blank($this->user_level)) {
+      $this->errors[] = "You must select a level for the User";
+    } elseif ($this->user_level == '') {
+      $this->errors[] = "You must select a level for the User";
     }
 
     if($this->password_required) {

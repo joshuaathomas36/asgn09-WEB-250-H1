@@ -8,7 +8,7 @@ if(!isset($_GET['id'])) {
   redirect_to(url_for('/staff/admins/index.php'));
 }
 $id = $_GET['id'];
-$admin = Admin::find_by_id($id);
+$admin = Users::find_by_id($id);
 if($admin == false) {
   redirect_to(url_for('/staff/admins/index.php'));
 }
@@ -21,7 +21,7 @@ if(is_post_request()) {
   $result = $admin->save();
 
   if($result === true) {
-    $session->message('The admin was updated successfully.');
+    $session->message('The user was updated successfully.');
     redirect_to(url_for('/staff/admins/show.php?id=' . $id));
   } else {
     // show errors
@@ -43,7 +43,7 @@ if(is_post_request()) {
   <a class="back-link" href="<?php echo url_for('/staff/admins/index.php'); ?>">&laquo; Back to List</a>
 
   <div class="admin edit">
-    <h1>Edit Admin</h1>
+    <h1>Edit User</h1>
 
     <?php echo display_errors($admin->errors); ?>
 

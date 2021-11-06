@@ -4,10 +4,10 @@
 <?php
 
 // Find all admins
-$admins = Admin::find_all();
+$admins = Users::find_all();
 
 ?>
-<?php $page_title = 'Admins'; ?>
+<?php $page_title = 'Users'; ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">
@@ -15,7 +15,7 @@ $admins = Admin::find_all();
     <h1>Admins</h1>
 
     <div class="actions">
-      <a class="action" href="<?php echo url_for('/staff/admins/new.php'); ?>">Add Admin</a>
+      <a class="action" href="<?php echo url_for('/staff/admins/new.php'); ?>">Add User</a>
     </div>
 
   	<table class="list">
@@ -25,6 +25,7 @@ $admins = Admin::find_all();
         <th>Last name</th>
         <th>Email</th>
         <th>Username</th>
+        <th>User level</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
@@ -37,6 +38,7 @@ $admins = Admin::find_all();
           <td><?php echo h($admin->last_name); ?></td>
           <td><?php echo h($admin->email); ?></td>
           <td><?php echo h($admin->username); ?></td>
+          <td><?php echo h($admin->user_level); ?></td>
           <td><a class="action" href="<?php echo url_for('/staff/admins/show.php?id=' . h(u($admin->id))); ?>">View</a></td>
           <td><a class="action" href="<?php echo url_for('/staff/admins/edit.php?id=' . h(u($admin->id))); ?>">Edit</a></td>
           <td><a class="action" href="<?php echo url_for('/staff/admins/delete.php?id=' . h(u($admin->id))); ?>">Delete</a></td>
