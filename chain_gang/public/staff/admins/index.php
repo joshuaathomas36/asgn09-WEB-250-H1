@@ -12,7 +12,7 @@ $admins = Users::find_all();
 
 <div id="content">
   <div class="admins listing">
-    <h1>Admins</h1>
+    <h1>Users</h1>
 
     <div class="actions">
       <a class="action" href="<?php echo url_for('/staff/admins/new.php'); ?>">Add User</a>

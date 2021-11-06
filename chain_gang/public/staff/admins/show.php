@@ -9,7 +9,7 @@ $admin = Users::find_by_id($id);
 
 ?>
 
-<?php $page_title = 'Show Admin: ' . h($admin->full_name()); ?>
+<?php $page_title = 'Show Users: ' . h($admin->full_name()); ?>
 <?php include(SHARED_PATH . '/staff_header.php'); ?>
 
 <div id="content">

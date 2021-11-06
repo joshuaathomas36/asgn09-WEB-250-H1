@@ -7,7 +7,7 @@ require_login();
 if(is_post_request()) {
 
   // Create record using post parameters
-  $args = $_POST['admin'];
+  $args = $_POST['users'];
   $admin = new Users($args);
   $result = $admin->save();
 
@@ -43,7 +43,7 @@ if(is_post_request()) {
       <?php include('form_fields.php'); ?>
 
       <div id="operations">
-        <input type="submit" value="Create Admin" />
+        <input type="submit" value="Create Users" />
       </div>
     </form>
 

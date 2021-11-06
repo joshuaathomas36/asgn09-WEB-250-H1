@@ -8,28 +8,28 @@ if(!isset($admin)) {
 
 <dl>
   <dt>First name</dt>
-  <dd><input type="text" name="admin[first_name]" value="<?php echo h($admin->first_name); ?>" /></dd>
+  <dd><input type="text" name="users[first_name]" value="<?php echo h($admin->first_name); ?>" /></dd>
 </dl>
 
 <dl>
   <dt>Last name</dt>
-  <dd><input type="text" name="admin[last_name]" value="<?php echo h($admin->last_name); ?>" /></dd>
+  <dd><input type="text" name="users[last_name]" value="<?php echo h($admin->last_name); ?>" /></dd>
 </dl>
 
 <dl>
   <dt>Email</dt>
-  <dd><input type="text" name="admin[email]" value="<?php echo h($admin->email); ?>" /></dd>
+  <dd><input type="text" name="users[email]" value="<?php echo h($admin->email); ?>" /></dd>
 </dl>
 
 <dl>
   <dt>Username</dt>
-  <dd><input type="text" name="admin[username]" value="<?php echo h($admin->username); ?>" /></dd>
+  <dd><input type="text" name="users[username]" value="<?php echo h($admin->username); ?>" /></dd>
 </dl>
 
 <dl>
   <dt>User Level</dt>
   <dd>
-    <select name="admin[user_level]">
+    <select name="users[user_level]">
       <option value=""></option>
       <option value="a" <?php if($admin->user_level == "a") { echo 'selected'; } ?>>a</option>
       <option value="m" <?php if($admin->user_level == "m") { echo 'selected'; } ?>>m</option>
@@ -39,10 +39,10 @@ if(!isset($admin)) {
 
 <dl>
   <dt>Password</dt>
-  <dd><input type="password" name="admin[password]" value="" /></dd>
+  <dd><input type="password" name="users[password]" value="" /></dd>
 </dl>
 
 <dl>
   <dt>Confirm Password</dt>
-  <dd><input type="password" name="admin[confirm_password]" value="" /></dd>
+  <dd><input type="password" name="users[confirm_password]" value="" /></dd>
 </dl>
